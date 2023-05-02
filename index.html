@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Include Bootstrap CSS file -->
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Upload</h1>
+
+        <form enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" class="form-control-file" name="uploaded_file" accept=".html">
+            </div>
+        </form>
+
+        <h1>Customize grade options</h1>
+        <form>
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="option1" id="option1Checkbox" value="true">
+                    <label class="form-check-label" for="option1Checkbox">Treat an S* like an A</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="option2" id="option2Checkbox" value="true">
+                    <label class="form-check-label" for="option2Checkbox">Treat an S like an A...</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="option3" id="option3Checkbox" value="true" checked>
+                    <label class="form-check-label" for="option3Checkbox">Weight Courses (i.e. a half credit course earns you half points, but counts as half a course)</label>
+                </div>
+            </div>
+            <!-- <button type="button" onclick="getCheckedOptions()">Submit</button> -->
+        </form>
+
+        <h1>Calculate</h1>
+        <button class="btn btn-primary" onclick="calculateGPA()">Calculate GPA</button>
+
+        <p id="GPA"></p>
+    </div>
+
+    <script src="script.js"></script> <!-- Include JavaScript file -->
+</body>
+</html>

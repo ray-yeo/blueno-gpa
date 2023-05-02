@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>brown gpa calc</title>
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <style>
+        /* Add your CSS styles here */
+        /* ... */
+    </style>
+    <script>
+        // Add your JavaScript code here
+        // ...
+    </script>
+</head>
+<body>
+    <h1>brown university gpa calculator</h1>
+    <hr>
+    <h2>step one: download transcript as an HTML file</h2>
+    <div style="display: flex; gap: 1em;">
+        <div>
+            <h3>option 1: my brown</h3>
+            <p>
+                - Head over to <a href="https://my.brown.edu/web/guest/student" target="_blank">https://my.brown.edu/web/guest/student</a><br>
+                - Student Records -> Unofficial Transcript<br>
+                - Right click -> Save As -> Format (HTML only)<br>
+                - Upload that HTML file below!
+            </p>
+        </div>
+        <div>
+            <h3>option 2: self service</h3>
+            <p>
+                - Head over to <a href="https://selfservice.brown.edu" target="_blank">https://selfservice.brown.edu</a><br>
+                - Student -> Student Records -> Academic Transcript<br>
+                - Right click -> Save As -> Format (HTML only)<br>
+                - Upload that HTML file below!
+            </p>
+        </div>
+    </div>
+    <hr>
+    <h2>step two: upload file</h2>
+    <p>privacy note: your transcripts are not saved on any disks, meaning they're discarded after use.</p>
+    <form enctype="multipart/form-data">
+        <input type="file" name="uploaded_file" accept=".html">
+        <input type="button" value="Upload" onclick="uploadFile()">
+    </form>
+    <hr>
+    <h2>step three: customize grade options</h2>
+    <p>Next, select grade calculation preferences. Make sure to hit submit.</p>
+    <form>
+        <label>
+            <input type="checkbox" name="option1" value="true">
+            Treat an S* like an A
+        </label><br>
+        <label>
+            <input type="checkbox" name="option2" value="true">
+            Treat an S like an A...
+        </label><br>
+        <label>
+            <input type="checkbox" name="option3" value="true" checked>
+            Weight Courses (i.e. a half credit course earns you half points, but counts as half a course)
+        </label>
+    </form>
+    <hr>
+    <h2>step four: calculate!</h2>
+    <p>A = 4 points, B = 3 points, C = 2 points</p>
+    <button onclick="calculateGPA()">Calculate GPA</button>
+    <script>
+        function calculateGPA() {
+            // Add your JavaScript code for calculating GPA here
+            // ...
+
+            // Assuming 'html_string' is a string containing the HTML content
+
+            html_string = file
+
+            var soup = new DOMParser().parseFromString(html_string, "text/html");
+
+            var course_department = Array.from(soup.querySelectorAll('td[width="20"][align="left"]')).map(td => td.textContent.trim());
+            var course_code = Array.from(soup.querySelectorAll('td[width="40"][align="left"]')).map(td => td.textContent.trim());
+            var course_name = Array.from(soup.querySelectorAll('td[width="305"][align="left"]')).map(td => td.textContent.trim());
+            var course_grade = Array.from(soup.querySelectorAll('td[width="55"][align="left"]')).map(td => td.textContent.trim());
+            var course_weight = Array.from(soup.querySelectorAll('td[width="60"][align="right"]')).map(td => td.textContent.trim());
+
+            // remove pre-reqs
+            course_department = course_department.slice(course_department.length - course_code.length);
+            course_grade = course_grade.slice(course_grade.length - course_code.length);
+
+            // only grab courses that one has gotten a grade for
+            var grade_dict = {"A": 4, "B": 3, "C":2};
+
+            if (option1) {
+            grade_dict["S*"] = 4;
+            }
+            if (option2) {
+            grade_dict["S"] = 4;
+            }
+
+            var total_points = 0;
+            var total_completed_courses = 0;
+            var counter = 0;
+
+            var course_included = [];
+
+            if (option3) {
+            for (var i = 0; i < course_grade.length; i++) {
+                if (!(course_grade[i] in grade_dict)) {
+                course_included.push(false);
+                } else {
+                total_points += grade_dict[course_grade[i]] * parseFloat(course_weight[counter]);
+                total_completed_courses += parseFloat(course_weight[counter]);
+                course_included.push(true);
+                }
+                counter++;
+            }
+            } else {
+            for (var i = 0; i < course_grade.length; i++) {
+                if (!(course_grade[i] in grade_dict)) {
+                course_included.push(false);
+                } else {
+                total_points += grade_dict[course_grade[i]];
+                total_completed_courses += 1;
+                course_included.push(true);
+                }
+                counter++;
+            }
+            }
+
+            // calculate GPA
+            var GPA = total_points / total_completed_courses;
+
+        }
+
+        function uploadFile() {
+            var input = document.querySelector('input[name="uploaded_file"]');
+            var file = input.files[0];
+
+            if (!file) {
+                alert("No file selected");
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var htmlString = e.target.result;
+                // Do something with the uploaded HTML file
+                console.log(htmlString);
+            };
+            reader.readAsText(file);
+        }
+
+    </script>
+    <hr>
+    <div id="outputDiv"></div>
+</body>
+</html>
