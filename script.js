@@ -87,7 +87,7 @@ function processCourseGrade() {
     var tableHtml = "<table><thead><tr><th>Course Name</th><th>Course Grade</th></tr></thead><tbody>";
     for (var i = 0; i < courseName.length; i++) {
         if (course_included[i]) {
-            tableHtml += "<tr><td>" + courseDepartment[i]+ "<td><td>" + courseName[i] + "</td><td>" + courseGrade[i] + "</td></tr>";
+            tableHtml += "<tr><td>" + courseName[i] + "</td><td>" + courseGrade[i] + "</td></tr>";
         }
     }
     tableHtml += "</tbody></table>";
