@@ -44,6 +44,7 @@ function processCourseGrade() {
     var course_included = [];
 
 
+
     if (option3Checkbox.checked) {
         console.log('Option3 is selected');
         for (var i = 0; i < courseGrade.length; i++) {
@@ -70,8 +71,9 @@ function processCourseGrade() {
     }
     // calculate GPA
     var GPA = total_points / total_completed_courses;
-    console.log(GPA)
-    document.getElementById("GPA").textContent = "GPA: " + GPA;
+    let roundedNum = GPA.toFixed(2);
+    console.log(roundedNum)
+    document.getElementById("GPA").textContent = "GPA: " + roundedNum;
 }
 
 
