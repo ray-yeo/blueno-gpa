@@ -73,9 +73,30 @@ function processCourseGrade() {
     var GPA = total_points / total_completed_courses;
     let roundedNum = GPA.toFixed(2);
     console.log(roundedNum)
+    document.getElementById("Stats").textContent = "Your Stats: ";
+
     document.getElementById("GPA").textContent = "GPA: " + roundedNum;
+
+    document.getElementById("Total Points").textContent = "Total Points: " + total_points;
+
+    document.getElementById("Total Classes").textContent = "Total Classes (included in GPA): " + total_completed_courses;
+
+
+
+    // Build an HTML table with the courseName and courseGrade data
+    var tableHtml = "<table><thead><tr><th>Course Name</th><th>Course Grade</th></tr></thead><tbody>";
+    for (var i = 0; i < courseName.length; i++) {
+        if (course_included[i]) {
+            tableHtml += "<tr><td>" + courseDepartment[i]+ "<td><td>" + courseName[i] + "</td><td>" + courseGrade[i] + "</td></tr>";
+        }
+    }
+    tableHtml += "</tbody></table>";
+
+    // Display the table on the page
+    document.getElementById("courseTable").innerHTML = tableHtml;
 }
 
+  
 
 function calculateGPA() {
     var htmlString;

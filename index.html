@@ -12,7 +12,7 @@
             <div class = "row">
                 <div class = "col">
                     <h1 class="display-4">Blueno's GPA Calculator</h1>
-                    <p class="lead">Made by a student for students: Figure out your GPA in under a minute!</p>
+                    <p class="lead">Made by a student for students <br> Figure out your GPA in under a minute!</p>
                 </div>
                 <div class = "col text-right">
                     <img src = "assets/blueno.jpg">
@@ -90,9 +90,26 @@
     <div class = "container">
         <h2>Step 4: Calculate</h2>
         <button class="btn btn-primary" onclick="calculateGPA()">Calculate GPA</button>
-        <p id="GPA"></p>
     </div>
     <br>
+
+
+    <div class = "container">
+        <h2 id = "Stats"></h2>
+        <div class = "row">
+            <div class = "col">
+                <p id="GPA"></p>
+                <p id ="Total Points"></p>
+                <p id = "Total Classes"></p>
+            </div>
+            <div class = "col">
+                <table id="courseTable"></table>
+
+            </div>
+        </div>
+
+    </div>
+
 
     <script src="script.js"></script> <!-- Include JavaScript file -->
 </body>
