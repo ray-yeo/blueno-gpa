@@ -81,6 +81,7 @@ function processCourseGrade() {
 
     document.getElementById("Total Classes").textContent = "Total Classes (included in GPA): " + total_completed_courses;
 
+    document.getElementById("Calculation").textContent = "GPA = Total Points / Total Classes = " + total_points + " / " + total_completed_courses;
 
 
     // Build an HTML table with the courseName and courseGrade data
