@@ -6,5 +6,19 @@ img {
     padding-top: 100px;
     padding-bottom: 50px;
     text-align: right;
+}
+
+  
+body {
+margin-top: 50px;
+}
+
+
+table {
+    border-collapse: collapse;
   }
   
+td, th {
+border: 1px solid black;
+padding: 8px;
+}

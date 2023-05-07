@@ -85,10 +85,10 @@ function processCourseGrade() {
 
 
     // Build an HTML table with the courseName and courseGrade data
-    var tableHtml = "<table><thead><tr><th>Course Name</th><th>Course Grade</th></tr></thead><tbody>";
+    var tableHtml = "<table><thead><tr><th> Course Name </th><th> Course Grade </th></tr></thead><tbody>";
     for (var i = 0; i < courseName.length; i++) {
         if (course_included[i]) {
-            tableHtml += "<tr><td>" + courseName[i] + "</td><td>" + courseGrade[i] + "</td></tr>";
+            tableHtml += " <tr><td> " + courseName[i] + " </td><td> " + courseGrade[i] + " </td></tr> ";
         }
     }
     tableHtml += "</tbody></table>";
@@ -131,4 +131,12 @@ function calculateGPA() {
         processCourseGrade();
     };
     reader.readAsText(uploadedFile);
+
+    window.scrollTo(0, document.body.scrollHeight);
+
 }
+
+
+// function scrollDown() {
+//   window.scrollTo(0, document.body.scrollHeight);
+// }
