@@ -94,6 +94,7 @@ function processCourseGrade() {
     tableHtml += "</tbody></table>";
 
     // Display the table on the page
+    document.getElementById("Table Title").textContent = "Courses Included in GPA";
     document.getElementById("courseTable").innerHTML = tableHtml;
 }
 
