@@ -5,6 +5,19 @@ var courseName;
 var courseWeight;
 
 
+var option1Checkbox = document.getElementById('option1Checkbox');
+
+// automatically check S* if S is checked
+var option2Checkbox = document.getElementById('option2Checkbox');
+
+option2Checkbox.addEventListener("change", function() {
+    // If checkbox1 is checked, check checkbox2
+    if (option2Checkbox.checked) {
+        option1Checkbox.checked = true;
+    }
+    });
+
+
 function processCourseGrade() {
     // Do something with the extracted information
     console.log("Course Grade:", courseGrade);
@@ -26,6 +39,14 @@ function processCourseGrade() {
 
     // Get the checkbox element by its id
     var option2Checkbox = document.getElementById('option2Checkbox');
+
+    // option2Checkbox.addEventListener("change", function() {
+    //     // If checkbox1 is checked, check checkbox2
+    //     if (option2Checkbox.checked) {
+    //         option1Checkbox.checked = true;
+    //         console.log('TESTING')
+    //     }
+    //   });
 
     // Check if option1 is selected
     if (option2Checkbox.checked) {
