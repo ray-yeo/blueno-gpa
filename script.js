@@ -116,6 +116,8 @@ function processCourseGrade() {
 
 
     document.getElementById("Credits").textContent = "Credits included in GPA: " + total_course_credits;
+    document.getElementById("Disclaimer").textContent = "***Please double check what you're seeing!***";
+
 
     // Display the table on the page
     document.getElementById("Table Title").textContent = "Courses Included in GPA";
