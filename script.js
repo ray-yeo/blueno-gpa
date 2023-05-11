@@ -97,16 +97,25 @@ function processCourseGrade() {
     document.getElementById("Stats").textContent = "Your Stats: ";
 
     document.getElementById("GPA").textContent = "GPA: " + roundedNum;
+    document.getElementById("Points").textContent = "Points included in GPA: " + total_points;
+    document.getElementById("Courses").textContent = "Courses included in GPA: " + total_completed_courses;
+
 
 
     // Build an HTML table with the courseName and courseGrade data
+
+    var total_course_credits = 0;
     var tableHtml = "<table><thead><tr><th> Course Name </th><th> Course Grade </th><th> Course Weight </th></tr></thead><tbody>";
     for (var i = 0; i < courseName.length; i++) {
         if (course_included[i]) {
+            total_course_credits += parseInt(courseWeight[i]);
             tableHtml += " <tr><td> " +  courseName[i] + " </td><td> " + courseGrade[i] + " </td><td> " + courseWeight[i] + " </td></tr> ";
         }
     }
     tableHtml += "</tbody></table>";
+
+
+    document.getElementById("Credits").textContent = "Credits included in GPA: " + total_course_credits;
 
     // Display the table on the page
     document.getElementById("Table Title").textContent = "Courses Included in GPA";
